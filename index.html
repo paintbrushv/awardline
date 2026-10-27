@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Awardline — North Texas public bid results, priced and sourced</title>
+<meta name="description" content="A sample issue of Awardline: what public road contracts in Cooke, Grayson, Denton and Collin counties cleared at, with every number sourced.">
+<style>
+  :root {
+    --ink:#12161c; --muted:#5c6672; --line:#dfe4ea; --paper:#fbfaf7; --card:#ffffff;
+    --accent:#8a2d1f; --green:#1e6b45;
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--paper); color:var(--ink);
+    font-family: ui-sans-serif, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height:1.5; }
+  .wrap { max-width:1040px; margin:0 auto; padding:32px 22px 64px; }
+  header.top { display:flex; align-items:baseline; justify-content:space-between; gap:16px;
+    border-bottom:2px solid var(--ink); padding-bottom:12px; }
+  .brand { font-size:22px; font-weight:800; letter-spacing:-.02em; }
+  .brand span { color:var(--accent); }
+  .issue { font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:.12em; }
+  h1 { font-size:clamp(27px,4.2vw,42px); line-height:1.1; letter-spacing:-.025em; margin:26px 0 10px; max-width:21ch; }
+  .lede { font-size:17px; color:var(--muted); max-width:70ch; margin:0 0 22px; }
+  .lede b { color:var(--ink); }
+  .stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:12px; margin:24px 0 8px; }
+  .stat { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:14px 16px; }
+  .stat .k { font-size:11px; text-transform:uppercase; letter-spacing:.09em; color:var(--muted); }
+  .stat .v { font-size:26px; font-weight:750; letter-spacing:-.02em; margin-top:2px; }
+  .stat .n { font-size:12px; color:var(--muted); }
+  h2 { font-size:13px; text-transform:uppercase; letter-spacing:.1em; margin:40px 0 4px; }
+  h2 span { color:var(--accent); }
+  .caption { font-size:13px; color:var(--muted); margin:0 0 12px; max-width:78ch; }
+  .tablewrap { overflow-x:auto; border:1px solid var(--line); border-radius:10px; background:var(--card); }
+  table { border-collapse:collapse; width:100%; font-size:13.5px; }
+  th { text-align:left; font-size:11px; text-transform:uppercase; letter-spacing:.07em; color:var(--muted);
+    padding:10px 12px; border-bottom:1px solid var(--line); white-space:nowrap; background:#f6f5f1; }
+  td { padding:10px 12px; border-bottom:1px solid #eef1f4; vertical-align:top; }
+  tr:last-child td { border-bottom:0; }
+  .num { text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap; }
+  .date { white-space:nowrap; color:var(--muted); font-variant-numeric:tabular-nums; }
+  .county { display:inline-block; font-size:10.5px; font-weight:700; letter-spacing:.06em; text-transform:uppercase;
+    background:#efe9df; color:#5a4632; padding:2px 7px; border-radius:99px; }
+  .proj strong { display:block; font-weight:650; }
+  .proj .sub, .sub { color:var(--muted); font-size:12px; }
+  .neg { color:var(--green); } .pos { color:var(--accent); } .strong { font-weight:750; }
+  .note { background:#fff; border:1px solid var(--line); border-left:3px solid var(--accent);
+    border-radius:8px; padding:14px 16px; font-size:14px; margin:16px 0; }
+  .note b { display:block; margin-bottom:4px; }
+  .offer { background:var(--ink); color:#fff; border-radius:14px; padding:28px 26px; margin:44px 0 0; }
+  .offer .eyebrow { font-size:11px; text-transform:uppercase; letter-spacing:.12em; color:#b9c2cd; }
+  .offer h3 { font-size:clamp(20px,2.6vw,27px); line-height:1.25; letter-spacing:-.02em; margin:8px 0 6px; font-weight:650; max-width:36ch; }
+  .offer p { color:#c7cfd9; font-size:14px; max-width:66ch; }
+  .plans { display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:12px; margin-top:20px; }
+  .plan { background:#1b222b; border:1px solid #2b3542; border-radius:10px; padding:16px; }
+  .plan .name { font-size:13px; font-weight:700; letter-spacing:.02em; }
+  .plan .price { font-size:24px; font-weight:750; margin:6px 0 2px; }
+  .plan .price small { font-size:12px; font-weight:500; color:#b9c2cd; }
+  .plan ul { margin:10px 0 0; padding-left:16px; color:#c7cfd9; font-size:13px; }
+  .plan li { margin-bottom:5px; }
+  .status { margin-top:18px; font-size:13px; color:#b9c2cd; border-top:1px solid #2b3542; padding-top:14px; }
+  .method { font-size:13px; color:var(--muted); }
+  .method li { margin-bottom:7px; }
+  .tag { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:11px; padding:1px 5px;
+    border:1px solid var(--line); border-radius:4px; background:#fff; color:#3d4653; }
+  footer { margin-top:44px; border-top:1px solid var(--line); padding-top:16px; font-size:12px; color:var(--muted); }
+  @media (max-width:640px) { .proj .sub { display:none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand">Award<span>line</span></div>
+    <div class="issue">Sample issue &middot; North Texas &middot; 2026-06-03 to 2026-10-15</div>
+  </header>
+
+  <h1>What North Texas road work actually cleared at.</h1>
+  <p class="lede">Every public road letting in Cooke, Grayson, Denton and Collin counties that drew at least one
+  bid, from 2026-06-03 to 2026-10-15. The engineer's estimate, the winning number, the
+  bidder, and the gap to second place. <b>60 contracts, one page, every figure traceable.</b></p>
+
+  <div class="stats">
+    <div class="stat"><div class="k">Contracts with bids</div><div class="v">60</div><div class="n">23 more drew no bid</div></div>
+    <div class="stat"><div class="k">Median vs. engineer</div><div class="v">-7.2%</div><div class="n">38 below, 22 above</div></div>
+    <div class="stat"><div class="k">Median low-to-second gap</div><div class="v">10.1%</div><div class="n">56 with two or more bids</div></div>
+    <div class="stat"><div class="k">Low bids, total</div><div class="v">$80.81M</div><div class="n">against $71.18M estimated</div></div>
+  </div>
+
+  <h2>The last twelve lettings <span>&mdash; [fact]</span></h2>
+  <p class="caption">Sorted by letting date. "Vs. estimate" is the low bid against TxDOT's sealed engineer's estimate.
+  "Gap to second" is the second-low bid relative to the low bid.</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Let</th><th>County</th><th>Project</th><th class="num">Engineer</th><th class="num">Low bid</th><th>Low bidder</th><th class="num">Vs. est.</th><th class="num">Gap to 2nd</th></tr></thead>
+    <tbody><tr>
+      <td class="date">2026-10-15</td>
+      <td><span class="county">Grayson</span></td>
+      <td class="proj"><strong>Debris Removal - Grayson Co FY27</strong><span class="sub">Various locations in to Grayson County</span></td>
+      <td class="num">$631K</td>
+      <td class="num">$554K</td>
+      <td>Sweeping Corporation Of America, LLC</td>
+      <td class="num neg">-12.2%</td>
+      <td class="num">+2.8%</td>
+    </tr>
+<tr>
+      <td class="date">2026-10-14</td>
+      <td><span class="county">Denton</span></td>
+      <td class="proj"><strong>BPM Denton Underseal FY 27</strong><span class="sub">At Little Elm Creek Bridge to and Little Elm Creek Relief</span></td>
+      <td class="num">$78K</td>
+      <td class="num">$83K</td>
+      <td>Garret Shields Infrastructure</td>
+      <td class="num pos">+6.1%</td>
+      <td class="num">+11.5%</td>
+    </tr>
+<tr>
+      <td class="date">2026-10-14</td>
+      <td><span class="county">Denton</span></td>
+      <td class="proj"><strong>On Call Traffic Control FY 27 Denton CO</strong><span class="sub">VARIOUS ROADWAYS to DENTON COUNTY MAINTENANCE SECTION</span></td>
+      <td class="num">$827K</td>
+      <td class="num">$757K</td>
+      <td>Road Solutions L.l.c.</td>
+      <td class="num neg">-8.5%</td>
+      <td class="num">+14.7%</td>
+    </tr>
+<tr>
+      <td class="date">2026-10-14</td>
+      <td><span class="county">Denton</span></td>
+      <td class="proj"><strong>Repair/Replace Conc Barrier Denton FY 27</strong><span class="sub">VARIOUS ROADWAYS to DENTON COUNTY MAINTENANCE SECTION</span></td>
+      <td class="num">$191K</td>
+      <td class="num">$166K</td>
+      <td>Garret Shields Infrastructure</td>
+      <td class="num neg">-13.0%</td>
+      <td class="num">+20.0%</td>
+    </tr>
+<tr>
+      <td class="date">2026-10-14</td>
+      <td><span class="county">Denton</span></td>
+      <td class="proj"><strong>04 Winter Weather Material - Road 11/26</strong><span class="sub">From Denton County to To Maintenance Section</span></td>
+      <td class="num">$71K</td>
+      <td class="num">$78K</td>
+      <td>NSG Logistics, LLC</td>
+      <td class="num pos">+9.9%</td>
+      <td class="num">sole bid</td>
+    </tr>
+<tr>
+      <td class="date">2026-10-14</td>
+      <td><span class="county">Denton</span></td>
+      <td class="proj"><strong>04 Winter Weather Material - Brine 11/26</strong><span class="sub">Denton County to Maintenance Section</span></td>
+      <td class="num">$110K</td>
+      <td class="num">$130K</td>
+      <td>Touchstone Resources, LLC</td>
+      <td class="num pos">+18.7%</td>
+      <td class="num">+4.6%</td>
+    </tr>
+<tr>
+      <td class="date">2026-10-06</td>
+      <td><span class="county">Grayson</span></td>
+      <td class="proj"><strong>US 69 3R Rehab</strong><span class="sub">Spruce Street (Whitewright) to Lovers Lane (Bells)</span></td>
+      <td class="num">$9.18M</td>
+      <td class="num">$9.88M</td>
+      <td>Highway 19 Construction LLC</td>
+      <td class="num pos">+7.6%</td>
+      <td class="num">+2.1%</td>
+    </tr>
+<tr>
+      <td class="date">2026-10-06</td>
+      <td><span class="county">Collin</span></td>
+      <td class="proj"><strong>FM 75 FROM MONTE CARLO BLVD TO-38701016</strong><span class="sub">MONTE CARLO BLVD to FM 1827</span></td>
+      <td class="num">$5.94M</td>
+      <td class="num">$4.91M</td>
+      <td>A. K. Gillis &amp; Sons, LLC</td>
+      <td class="num neg">-17.4%</td>
+      <td class="num">+10.3%</td>
+    </tr>
+<tr>
+      <td class="date">2026-09-17</td>
+      <td><span class="county">Grayson</span></td>
+      <td class="proj"><strong>On Call MBGF-SAO FY27</strong><span class="sub">Various locations in to Grayson and Fannin County</span></td>
+      <td class="num">$589K</td>
+      <td class="num">$519K</td>
+      <td>Marcom&#x27;s Mowing Service, LLC</td>
+      <td class="num neg">-12.0%</td>
+      <td class="num">+12.2%</td>
+    </tr>
+<tr>
+      <td class="date">2026-09-17</td>
+      <td><span class="county">Grayson</span></td>
+      <td class="proj"><strong>Channel Erosion Repair-Grayson Co.</strong><span class="sub">Various locations in to Grayson County</span></td>
+      <td class="num">$180K</td>
+      <td class="num">$168K</td>
+      <td>Garret Shields Infrastructure</td>
+      <td class="num neg">-6.7%</td>
+      <td class="num">+107.0%</td>
+    </tr>
+<tr>
+      <td class="date">2026-09-17</td>
+      <td><span class="county">Grayson</span></td>
+      <td class="proj"><strong>Crack Seal-SAO FY27</strong><span class="sub">Various locations in to Grayson and Fannin County</span></td>
+      <td class="num">$720K</td>
+      <td class="num">$498K</td>
+      <td>D &amp; M Contractors, LLC</td>
+      <td class="num neg">-30.8%</td>
+      <td class="num">+52.7%</td>
+    </tr>
+<tr>
+      <td class="date">2026-09-17</td>
+      <td><span class="county">Grayson</span></td>
+      <td class="proj"><strong>On Call Traffic Control-Grayson FY27</strong><span class="sub">Various Roadways in to Grayson County</span></td>
+      <td class="num">$980K</td>
+      <td class="num">$920K</td>
+      <td>FC Traffic Control, LLC</td>
+      <td class="num neg">-6.1%</td>
+      <td class="num">+5.5%</td>
+    </tr></tbody>
+  </table></div>
+
+  <h2>Who is winning <span>&mdash; [fact]</span></h2>
+  <p class="caption">Low-bid dollars and win counts across the four counties, 2026-06-03 to 2026-10-15.
+  A low bid is not an award; the award follows at the agency's next court or council meeting.</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th class="num">#</th><th>Contractor</th><th class="num">Wins</th><th class="num">Low-bid dollars</th><th>Counties</th></tr></thead>
+    <tbody><tr><td class="num">1</td><td>D. L. Lennon Incorporated - Contractor</td>
+      <td class="num">2</td><td class="num">$22.45M</td>
+      <td class="sub">Collin, Grayson</td></tr>
+<tr><td class="num">2</td><td>A. K. Gillis &amp; Sons, LLC</td>
+      <td class="num">2</td><td class="num">$15.97M</td>
+      <td class="sub">Collin</td></tr>
+<tr><td class="num">3</td><td>Highway 19 Construction LLC</td>
+      <td class="num">1</td><td class="num">$9.88M</td>
+      <td class="sub">Grayson</td></tr>
+<tr><td class="num">4</td><td>Jagoe-public Company</td>
+      <td class="num">2</td><td class="num">$5.09M</td>
+      <td class="sub">Collin</td></tr>
+<tr><td class="num">5</td><td>SICE Inc.</td>
+      <td class="num">1</td><td class="num">$2.84M</td>
+      <td class="sub">Collin</td></tr>
+<tr><td class="num">6</td><td>RK Hall, LLC</td>
+      <td class="num">3</td><td class="num">$2.57M</td>
+      <td class="sub">Collin, Grayson</td></tr>
+<tr><td class="num">7</td><td>Tucan Contracting, LLC</td>
+      <td class="num">1</td><td class="num">$2.34M</td>
+      <td class="sub">Denton</td></tr>
+<tr><td class="num">8</td><td>Altus Construction LLC</td>
+      <td class="num">1</td><td class="num">$2.19M</td>
+      <td class="sub">Collin</td></tr>
+<tr><td class="num">9</td><td>RB Contracting, LLC</td>
+      <td class="num">1</td><td class="num">$2.13M</td>
+      <td class="sub">Grayson</td></tr>
+<tr><td class="num">10</td><td>Sweeping Corporation Of America, LLC</td>
+      <td class="num">2</td><td class="num">$1.48M</td>
+      <td class="sub">Collin, Grayson</td></tr></tbody>
+  </table></div>
+
+  <h2>Where the estimate broke <span>&mdash; [fact]</span></h2>
+  <p class="caption">Six lettings where the low bid landed more than 40% away from the engineer's estimate, in either direction.
+  These are the jobs where the estimate was the least useful number in the room.</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Let</th><th>County</th><th>Project</th><th class="num">Engineer</th><th class="num">Low bid</th><th class="num">Vs. est.</th><th>Low bidder</th></tr></thead>
+    <tbody><tr><td class="date">2026-09-03</td><td><span class="county">Collin</span></td>
+      <td>US 75 from Wilson Creek to Exchange Pkwy</td><td class="num">$1.13M</td>
+      <td class="num">$2.84M</td>
+      <td class="num pos">+152.0%</td>
+      <td>SICE Inc.</td></tr>
+<tr><td class="date">2026-07-08</td><td><span class="county">Collin</span></td>
+      <td>On Call Traffic Control Services 07 1026</td><td class="num">$248K</td>
+      <td class="num">$546K</td>
+      <td class="num pos">+119.7%</td>
+      <td>FC Traffic Control, LLC</td></tr>
+<tr><td class="date">2026-09-03</td><td><span class="county">Grayson</span></td>
+      <td>BRIDGE REPLACEMENT -29</td><td class="num">$1.08M</td>
+      <td class="num">$2.13M</td>
+      <td class="num pos">+98.0%</td>
+      <td>RB Contracting, LLC</td></tr>
+<tr><td class="date">2026-08-06</td><td><span class="county">Collin</span></td>
+      <td>FM 981 from SH 78 to FM 1562</td><td class="num">$9.56M</td>
+      <td class="num">$18.83M</td>
+      <td class="num pos">+96.9%</td>
+      <td>D. L. Lennon Incorporated - Contractor</td></tr>
+<tr><td class="date">2026-09-09</td><td><span class="county">Collin</span></td>
+      <td>BRINE SALT FY27</td><td class="num">$127K</td>
+      <td class="num">$247K</td>
+      <td class="num pos">+94.1%</td>
+      <td>NSG Logistics, LLC</td></tr>
+<tr><td class="date">2026-06-03</td><td><span class="county">Cooke</span></td>
+      <td>Cooke County chevrons</td><td class="num">$443K</td>
+      <td class="num">$847K</td>
+      <td class="num pos">+91.4%</td>
+      <td>Je Casey, LLC</td></tr></tbody>
+  </table></div>
+
+  <h2>By county <span>&mdash; [fact]</span></h2>
+  <div class="tablewrap"><table>
+    <thead><tr><th>County</th><th class="num">Contracts</th><th class="num">Engineer total</th><th class="num">Low-bid total</th><th class="num">Median vs. est.</th></tr></thead>
+    <tbody><tr><td>Cooke</td><td class="num">3</td>
+        <td class="num">$2.10M</td><td class="num">$2.41M</td>
+        <td class="num neg">-5.3%</td></tr>
+<tr><td>Grayson</td><td class="num">14</td>
+        <td class="num">$22.35M</td><td class="num">$22.98M</td>
+        <td class="num neg">-9.3%</td></tr>
+<tr><td>Denton</td><td class="num">15</td>
+        <td class="num">$4.69M</td><td class="num">$5.28M</td>
+        <td class="num neg">-8.5%</td></tr>
+<tr><td>Collin</td><td class="num">28</td>
+        <td class="num">$42.03M</td><td class="num">$50.14M</td>
+        <td class="num neg">-8.8%</td></tr></tbody>
+  </table></div>
+
+  <h2>Material check: Grayson County asphalt, March 2026 <span>&mdash; [fact]</span></h2>
+  <p class="caption">Delivered hot-mix price per ton from the county's own material letting. Reynolds, RK Hall, Hall Brothers,
+  Vulcan, Zack Burkett and Austin Asphalt bid. Hall Brothers and Vulcan passed on hot-mix; the spread between the low and
+  high delivered price is the number that matters when a county sets its unit-price allowance.</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Delivery site</th><th class="num">Reynolds</th><th class="num">RK Hall (low)</th><th class="num">Austin Asphalt</th><th class="num">Low vs. high</th></tr></thead>
+    <tbody>
+      <tr><td>Pct. 1 Sherman</td><td class="num">$109.75</td><td class="num strong">$91.00</td><td class="num">$95.00</td><td class="num">+20.6%</td></tr>
+      <tr><td>Pct. 2 Denison</td><td class="num">$110.25</td><td class="num strong">$91.00</td><td class="num">$97.00</td><td class="num">+21.2%</td></tr>
+      <tr><td>Pct. 3 Whitesboro</td><td class="num">$113.25</td><td class="num strong">$91.00</td><td class="num">$97.00</td><td class="num">+24.5%</td></tr>
+      <tr><td>Pct. 4 Pottsboro</td><td class="num">$111.75</td><td class="num strong">$91.00</td><td class="num">$99.00</td><td class="num">+22.8%</td></tr>
+      <tr><td>Pct. 4 Gordonville</td><td class="num">$114.75</td><td class="num strong">$92.00</td><td class="num">$99.00</td><td class="num">+24.7%</td></tr>
+      <tr><td>Pickup at plant</td><td class="num">$96.75</td><td class="num strong">$83.00</td><td class="num">$81.00</td><td class="num">+16.6%</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="note"><b>What this issue would have told you [inference]</b>
+  If you bid road work in these four counties, the engineer's estimate was not the number to price against: the median
+  contract cleared 7.2% <em>under</em> it, and the median second-place bid was 10.1% above the winner.
+  A bid priced at the estimate was, more often than not, a losing bid. This inference fails if the next 60 contracts show a
+  different sign or a median gap under 3%.</div>
+
+  <div class="note"><b>What it does not tell you [open]</b>
+  Award status, unit-price line items, change orders and rejection decisions are not in this dataset. The agency's court
+  order or council minutes answer those. Every row here is a bid opening, not an award.</div>
+
+  <section class="offer">
+    <div class="eyebrow">The offer</div>
+    <h3>Know what the next job cleared at before you price it.</h3>
+    <p>Awardline sends one sourced brief a week covering every public road letting in your counties: the estimate,
+    the winning number, the bidder, and the gap to second. Priced at the cost of the estimator hours it replaces.</p>
+    <div class="plans">
+      <div class="plan">
+        <div class="name">County Scout</div>
+        <div class="price">$79<small> / month</small></div>
+        <ul><li>One county</li><li>Monthly brief</li><li>12-month archive for that county</li></ul>
+      </div>
+      <div class="plan">
+        <div class="name">District Desk</div>
+        <div class="price">$149<small> / month</small></div>
+        <ul><li>Cooke, Grayson, Denton, Collin</li><li>Weekly brief</li><li>Competitor win table</li><li>Material price checks</li></ul>
+      </div>
+      <div class="plan">
+        <div class="name">Bid Room</div>
+        <div class="price">$390<small> one time</small></div>
+        <ul><li>One trade, one county</li><li>12-month price study</li><li>Who sets the price, and by how much</li></ul>
+      </div>
+    </div>
+    <div class="status">Ordering opens when billing is live. This page is the sample issue; there is no buy button
+    and no charge. Sample data pulled 2026-10-27.</div>
+  </section>
+
+  <h2>Method and limits <span>&mdash; [fact]</span></h2>
+  <ul class="method">
+    <li><b>Source.</b> TxDOT Bid Tabulations, Texas Open Data Portal dataset <span class="tag">de7b-7dna</span>,
+      <a href="https://data.texas.gov/dataset/Bid-Tabulations/de7b-7dna">data.texas.gov/dataset/Bid-Tabulations/de7b-7dna</a>, pulled 2026-10-27.
+      State and local lettings, contract totals, sealed engineer's estimate and bidder names.</li>
+    <li><b>Window.</b> Let dates 2026-06-03 through 2026-10-15. Counties: Cooke, Grayson, Denton, Collin.
+      60 contracts with at least one bid; 23 lettings drew no bid and are excluded from the averages.</li>
+    <li><b>Definitions.</b> Low bid is the lowest ranked responsive bid total. Gap to second is (second &minus; low) &divide; low.
+      Median vs. estimate is the median of (low &divide; sealed engineer's estimate &minus; 1).</li>
+    <li><b>Material check.</b> Grayson County 2026-03 Asphalt Materials bid tabulation, price per ton delivered,
+      county Purchasing page, closed-status tabulation. Unit prices, not contract totals.</li>
+    <li><b>Not included.</b> Awards, line-item unit prices, addenda, change orders, rejected bids, and anything behind a
+      vendor registration wall. Agency records answer those.</li>
+  </ul>
+
+  <footer>
+    Awardline is an independent data service. It is not affiliated with TxDOT, any county, or any contractor named here.
+    No customer names, testimonials or logos appear on this page. Sample issue 01.
+  </footer>
+</div>
+</body>
+</html>
