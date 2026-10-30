@@ -369,16 +369,20 @@
       </div>
     </div>
     <div class="status">Ordering opens when billing is live. This page is the sample issue; there is no buy button
-    and no charge. Sample data pulled 2026-10-27.</div>
+    and no charge. Sample data pulled 2026-10-30.</div>
   </section>
 
   <h2>Method and limits <span>&mdash; [fact]</span></h2>
   <ul class="method">
     <li><b>Source.</b> TxDOT Bid Tabulations, Texas Open Data Portal dataset <span class="tag">de7b-7dna</span>,
-      <a href="https://data.texas.gov/dataset/Bid-Tabulations/de7b-7dna">data.texas.gov/dataset/Bid-Tabulations/de7b-7dna</a>, pulled 2026-10-27.
+      <a href="https://data.texas.gov/dataset/Bid-Tabulations/de7b-7dna">data.texas.gov/dataset/Bid-Tabulations/de7b-7dna</a>, pulled 2026-10-30.
       State and local lettings, contract totals, sealed engineer's estimate and bidder names.</li>
     <li><b>Window.</b> Let dates 2026-06-03 through 2026-10-15. Counties: Cooke, Grayson, Denton, Collin.
       60 contracts with at least one bid; 23 lettings drew no bid and are excluded from the averages.</li>
+    <li><b>Freshness.</b> Pulled 2026-10-30. The newest letting carrying a posted tabulation is 2026-10-15, not
+      today: TxDOT posts a tabulation after the letting is opened, so the lag between a job being let and a number existing
+      runs days, not hours [inference; falsified by any pull in which a letting appears tabulated on its own let date]. Every
+      brief names the date it was pulled, and any row can be re-checked against the portal by its CSJ.</li>
     <li><b>Definitions.</b> Low bid is the lowest ranked responsive bid total. Gap to second is (second &minus; low) &divide; low.
       Median vs. estimate is the median of (low &divide; sealed engineer's estimate &minus; 1).</li>
     <li><b>Arithmetic.</b> Table dollars are printed to the dollar exactly as TxDOT publishes them, and every percentage is
